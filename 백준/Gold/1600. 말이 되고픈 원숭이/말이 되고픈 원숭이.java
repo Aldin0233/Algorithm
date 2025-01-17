@@ -8,10 +8,9 @@ public class Main {
 
     private static int K, W, H;
     private static boolean[][] map;
-    private static boolean[][][] visited;
     private static int answer;
-    private static int[] dr = {-1, 1, 0, 0, -1, -2, -2, -1, 1, 2, 2, 1};
-    private static int[] dc = {0, 0, -1, 1, -2, -1, 1, 2, -2, -1, 1, 2};
+    private static final int[] dr = {-1, 1, 0, 0, -1, -2, -2, -1, 1, 2, 2, 1};
+    private static final int[] dc = {0, 0, -1, 1, -2, -1, 1, 2, -2, -1, 1, 2};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,7 +31,7 @@ public class Main {
 
     private static void bfs() {
         PriorityQueue<Point> pq = new PriorityQueue<>();
-        visited = new boolean[H][W][K + 1];
+        boolean[][][] visited = new boolean[H][W][K + 1];
         pq.add(new Point(0, 0, 0, K));
         visited[0][0][K] = true;
 
