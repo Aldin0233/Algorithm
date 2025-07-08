@@ -18,8 +18,10 @@ public class Main {
                 canPick[i][j] = Integer.parseInt(st.nextToken()) == 1;
             }
         }
+        //대각선 자체를 인덱스로 보고 직접 안 올라감
         upperLeftDiagonal = new boolean[(fieldSize * 2) -1];
         upperRightDiagonal = new boolean[(fieldSize * 2) -1];
+        //흑백 절반으로 더 나누기
         dfs(0, 0, 0, true);
         dfs(0, 0, 0, false);
         ans = blackMax + whiteMax;
@@ -31,7 +33,7 @@ public class Main {
         else whiteMax = Math.max(whiteMax, nowPick);
         for(int i = x; i < fieldSize; i++) {
             for(int j = i == x ? y : 0; j < fieldSize; j++) {
-                if(((i + j) % 2 == 0) == isBlack && canPick[i][j]) {
+                if(((i + j) % 2 == 0) == isBlack && canPick[i][j]) { //짝수면 흑으로 치겠음.
                     int leftDiagonalIdx = calLeftDiagonalIdx(i, j);
                     int rightDiagonalIdx = calRightDiagonalIdx(i, j);
                     if(!upperLeftDiagonal[leftDiagonalIdx] && !upperRightDiagonal[rightDiagonalIdx]) {
