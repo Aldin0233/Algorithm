@@ -39,7 +39,7 @@ public class Main {
                     return;
                 }
                 for(Edge edge : edges.get(s.destination)) {
-                    if(visited[edge.to]) continue;
+                    if(visited[edge.to] || edge.cost > i) continue;
                     int newCost = s.nowCost + edge.cost;
                     if(newCost <= C) {
                         pq.offer(new State(edge.to, newCost));
